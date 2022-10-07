@@ -6,7 +6,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const { syncBuiltinESMExports } = require('module');
-const app = express();
+
 const ejs = require('ejs');
 
 var CONFIG = require('./mysqlconfig.json');
@@ -22,7 +22,7 @@ const connection = mysql.createConnection({
 
 
 
-
+const app = express();
 
 
 app.use(session({
