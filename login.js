@@ -89,9 +89,8 @@ app.get('/painel', function(req, res)
 });
 
 
-
-
-https
+try{
+	https
   .createServer(
     {
       key: fs.readFileSync('/etc/letsencrypt/live/cheiros.in/privkey.pem'),
@@ -103,10 +102,12 @@ https
   .listen(443, () => {
     console.log('HTTPS Server running on port 443')
   })
-
-const httpServer = http.createServer(app);
+  const httpServer = http.createServer(app);
 
 httpServer.listen(80, () => {
 	console.log('HTTP Server running on port 80');
 });
-
+}
+catch{
+	app.listen(80);
+}
