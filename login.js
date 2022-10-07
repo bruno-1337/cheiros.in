@@ -124,5 +124,5 @@ catch{
 }
 
 http.get('*', function(req,res){
-	res.redirect('https://cheiros.in' + req.url);
+	res.status(301).redirect('https://cheiros.in' + req.url);
 })
