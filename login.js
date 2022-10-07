@@ -116,7 +116,7 @@ try{
   const httpServer = http.createServer(app);
 
 httpServer.listen(80, () => {
-	res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+	res.status(301).redirect('https://cheiros.in' + req.url);
 	console.log('HTTP Server running on port 80');
 });
 }
