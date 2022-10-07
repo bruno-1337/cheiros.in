@@ -36,6 +36,9 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 app.set('view engine', 'ejs');
 
+
+//favicon xd
+app.use('/favicon.ico', express.static('img/favicon.ico'));
 // Render pages
 app.get('/', (req, res) => res.render('pages/home'));
 
