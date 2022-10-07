@@ -1,9 +1,4 @@
-particlesJS.load('particles-js', 'particlesjs-config.json');
-
 addEventListener('DOMContentLoaded', (event) => {});
-
-
-
 
 window.addEventListener('DOMContentLoaded', (event) => 
 {
@@ -14,7 +9,6 @@ window.addEventListener('DOMContentLoaded', (event) =>
 function addbuttonlisteners()
 {
     //define botões
-    particlesJS.load('particles-js', 'particlesjs-config.json');
     var curriculobutton = document.getElementById("curriculo");
     var github = document.getElementById("github");
     var login = document.getElementById("login")
