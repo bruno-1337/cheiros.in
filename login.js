@@ -1,3 +1,6 @@
+const fs = require('fs')
+const https = require('https');
+const http = require('http');
 const mysql = require('mysql2');
 const express = require('express');
 const session = require('express-session');
@@ -87,4 +90,23 @@ app.get('/painel', function(req, res)
 
 
 
-app.listen(3000);
+
+https
+  .createServer(
+    {
+      key: fs.readFileSync('/etc/letsencrypt/live/cheiros.in/privkey.pem'),
+      cert: fs.readFileSync('/etc/letsencrypt/live/cheiros.in/cert.pem'),
+      ca: fs.readFileSync('/etc/letsencrypt/live/cheiros.in/chain.pem'),
+    },
+    app
+  )
+  .listen(443, () => {
+    console.log('HTTPS Server running on port 443')
+  })
+
+const httpServer = http.createServer(app);
+
+httpServer.listen(80, () => {
+	console.log('HTTP Server running on port 80');
+});
+
