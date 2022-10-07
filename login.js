@@ -37,8 +37,6 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.set('view engine', 'ejs');
 
 
-//favicon xd
-app.use('/favicon.ico', express.static('img/favicon.ico'));
 // Render pages
 app.get('/', (req, res) => res.render('pages/home'));
 
@@ -115,12 +113,12 @@ try{
   .listen(443, () => {
     console.log('HTTPS Server running on port 443')
   })
-  const httpServer = http.createServer(app);
+  
+}
+catch{
+	const httpServer = http.createServer(app);
 
 httpServer.listen(80, () => {
 	console.log('HTTP Server running on port 80');
 });
-}
-catch{
-	app.listen(80);
 }
