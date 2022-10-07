@@ -16,7 +16,7 @@ function addbuttonlisteners()
     //EventListener para botões
     curriculo.addEventListener("click", function(e) 
     {
-       window.open("/resume");
+       window.open("/resume", "_self");
     });
     github.addEventListener("click", function(e) 
     {

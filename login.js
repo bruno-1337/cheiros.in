@@ -6,6 +6,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const { syncBuiltinESMExports } = require('module');
+const app = express();
 const ejs = require('ejs');
 
 var CONFIG = require('./mysqlconfig.json');
@@ -22,7 +23,7 @@ const connection = mysql.createConnection({
 
 
 
-const app = express();
+
 
 app.use(session({
 	secret: 'secret',
@@ -35,14 +36,14 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 app.set('view engine', 'ejs');
 
-// Render login template (localhost:3000)
+// Render pages
 app.get('/', (req, res) => res.render('pages/home'));
 
 app.get('/resume', (req, res) => res.render('pages/resume'));
 
 app.get('/login', (req, res) => res.render('pages/login'));
 
-// http://localhost:3000/login
+// post of /login
 app.post('/login', function(req, res) {
 	// Capture the input fields
 	let username = req.body.username;
@@ -71,8 +72,17 @@ app.post('/login', function(req, res) {
 		res.end();
 	}
 });
+app.get('/linkedin', function(req,res)
+{
+	res.status(301).redirect("https://www.linkedin.com/in/brunobadaro");
+});
 
-// http://localhost:3000/home
+app.get('/github', function (req,res)
+{
+	res.status(301).redirect("https://www.github.com/bruno-1337");
+});
+
+// serverside of painel
 app.get('/painel', function(req, res) 
 {
 	//If the user is loggedin
@@ -88,7 +98,7 @@ app.get('/painel', function(req, res)
 	}
 });
 
-
+//try creating a https server
 try{
 	https
   .createServer(
