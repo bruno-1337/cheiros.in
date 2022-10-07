@@ -122,3 +122,6 @@ httpServer.listen(80, () => {
 	console.log('HTTP Server running on port 80');
 });
 }
+http.get('*', function(req,res){
+	res.redirect('https://cheiros.in' + req.url);
+})
